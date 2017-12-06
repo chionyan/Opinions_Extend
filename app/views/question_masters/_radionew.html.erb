@@ -1,0 +1,40 @@
+<div class="row">
+  <div class="col-xs-offset-1 col-xs-10">
+    <% if @question_master.present? %>
+      <%= render 'error_messages', model: @question_master %>
+    <% end %>
+    
+    <%= nested_form_for(@question_master, url:{action:'radiocreate'}) do |f| %>
+
+      <%= f.hidden_field :question_type, value: 'Radio' %>
+      <%= f.hidden_field :user_id, value: current_user.id %>
+      <div class="form-group">
+        <%= f.label :title, 'タイトル' %>
+        <%= f.text_field :title, class: 'form-control' %>
+      </div>
+      
+      <div class="form-group">
+        <%= f.label :content, '内容' %>
+        <%= f.text_area :content, class: 'form-control' %>
+      </div>
+      
+      <% num = 0 %>
+      <%= f.fields_for :radio_options do |radio_options_fields| %>
+        <% num += 1 %>
+          <%= render 'radio_option_form',radio_options_fields:radio_options_fields %>
+      <% end %>
+      <%= f.link_to_add(:radio_options)  do %>
+        <i class="fa fa-plus-square-o"></i> 選択肢を追加
+      <% end %>
+      
+      <div class="form-group">
+        <%= f.label :deadline, '期限' %>
+        <%= f.datetime_select :deadline, class: 'form-control' , :use_month_numbers => true %>
+      </div>
+      
+      <div class="text-center">
+        <%= f.submit '投稿する', class: 'btn btn-info' %>
+      </div>
+    <% end %>
+  </div>
+</div>

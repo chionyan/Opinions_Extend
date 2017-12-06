@@ -1,0 +1,30 @@
+<div class="row">
+  <div class="col-xs-offset-1 col-xs-10">
+    <div class="panel panel-default">
+      <div class="panel-heading"><h1><%= @question_master.title %></h1></div>
+      <div class="panel-body">
+         <p><%= @question_master.content %></p>
+         <% if @answer.present? %>
+            <%= render 'error_messages', model: @answer %>
+         <% end %>
+        <%= form_for(@question_master.answers.build) do |f| %>
+        
+          <%= f.hidden_field :question_master_id, value: @question_master.id %>
+          <%= f.hidden_field :type, value: 'Check' %>
+          <%= f.hidden_field :user_id, value: current_user.id %>
+    
+          <%= f.collection_check_boxes(:answer, @options, :content, :content) do |b|%>
+            <div class="checkbox-display">
+              <%= b.check_box(class: "check_box") %>
+              <%= b.label(class: "check_box")  %>
+            </div>
+          <% end %>
+              
+          <div class="text-right">
+            <%= f.submit '送信', class: 'btn btn-primary' %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,38 @@
+<div class="row">
+  <div class="col-xs-offset-1 col-xs-10">
+    <div class="panel panel-default">
+      <div class="panel-heading"><h1><%= @question_master.title %></h1></div>
+      <div class="panel-body">
+         <p><%= @question_master.content %></p>
+          <% if @question_master.question_type == "Text" %>
+            <% path = textnew_a_path(@question_master.id) %>
+            <p>回答例</p>
+            <ul class="list-group">
+              <% @answers_rand.each do |answer| %>
+            	<li class="list-group-item"><%= answer.answer %></li>
+            	<% end %>
+            </ul>
+
+          <% elsif @question_master.question_type == "Radio" %>
+            <% path = radionew_a_path(@question_master.id) %>
+            <p>現在の集計結果</p>
+            <%= pie_chart @chart_data %>
+            
+          <% elsif @question_master.question_type == "Check" %>
+            <% path = checknew_a_path(@question_master.id) %>
+            <p>現在の集計結果</p>
+            <%= column_chart @chart_data %>
+          <% end %>
+
+          <% #if !@question_master.answers.find_by(user_id: current_user) %>
+            <%= link_to "回答する", path, class:'btn btn-primary' %>
+          <% #else %>
+            <button class="btn btn-default">回答済み</button>
+          <% #end %>
+      </div>
+    </div>
+  </div>
+</div>  
+  
+  
+  

@@ -1,0 +1,4 @@
+$(".tabs-content").html("<%= escape_javascript(render 'radionew') %>");
+$(".tabs-menu li").removeClass("active");
+$(".tabs-menu .radiotab").parent("li").addClass("active");
+$(".tabs-content").css('background','#F8DBEB');

@@ -1,0 +1,4 @@
+$(".tabs-content").html("<%= escape_javascript(render 'textnew') %>");
+$(".tabs-menu li").removeClass("active");
+$(".tabs-menu .texttab").parent("li").addClass("active");
+$(".tabs-content").css('background','#DDF8DB');

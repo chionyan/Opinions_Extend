@@ -1,0 +1,9 @@
+<div class="form-group">
+   <%= check_options_fields.label :content, '回答' + num.to_s %>
+  <div class="form-inline">
+    <%= check_options_fields.link_to_remove do %>
+      <i class="fa fa-minus-square-o"></i>
+    <% end %>
+    <%= check_options_fields.text_field :content, class: 'form-control' %>
+  </div>
+</div>

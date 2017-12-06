@@ -1,0 +1,9 @@
+<div class="form-group">
+  <%= radio_options_fields.label :content, '選択肢' %>
+  <div class="form-inline">
+    <%= radio_options_fields.link_to_remove do %>
+      <i class="fa fa-minus-square-o"></i>
+    <% end %>
+    <%= radio_options_fields.text_field :content, class: 'form-control' %>
+  </div>
+</div>

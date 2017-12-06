@@ -1,0 +1,4 @@
+$(".tabs-content").html("<%= escape_javascript(render 'checknew') %>");
+$(".tabs-menu li").removeClass("active");
+$(".tabs-menu .checktab").parent("li").addClass("active");
+$(".tabs-content").css('background','#dbebf8');
