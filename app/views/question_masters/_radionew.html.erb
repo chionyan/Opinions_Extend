@@ -21,7 +21,7 @@
       <% num = 0 %>
       <%= f.fields_for :radio_options do |radio_options_fields| %>
         <% num += 1 %>
-          <%= render 'radio_option_form',radio_options_fields:radio_options_fields %>
+          <%= render 'radio_option_form',radio_options_fields:radio_options_fields, num:num %>
       <% end %>
       <%= f.link_to_add(:radio_options)  do %>
         <i class="fa fa-plus-square-o"></i> 選択肢を追加

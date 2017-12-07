@@ -22,7 +22,7 @@
       <% num = 0 %>
       <%= f.fields_for :check_options do |check_options_fields| %>
         <% num += 1 %>
-          <%= render 'check_option_form',check_options_fields:check_options_fields %>
+          <%= render 'check_option_form',check_options_fields:check_options_fields, num:num%>
       <% end %>
       <%= f.link_to_add(:check_options)  do %>
         <i class="fa fa-plus-square-o"></i> 回答を追加

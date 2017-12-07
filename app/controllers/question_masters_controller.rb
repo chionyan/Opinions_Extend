@@ -2,6 +2,7 @@ class QuestionMastersController < ApplicationController
   before_action :logged_in_user
   def new
     @question_master = QuestionMaster.new
+    4.times { @question_master.radio_options.build } #追加
   end  
 
   def create
