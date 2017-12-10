@@ -8,11 +8,11 @@
             <% path = textnew_a_path(@question_master.id) %>
             <p>回答例</p>
             <ul class="list-group">
-              <% if !(@answers_rand.nil?) %>
-                <% @answers_rand.each do |answer| %>
-              	<li class="list-group-item"><%= answer.answer %></li>
-              	<% end %>
-            	<% end %>
+              <%#if !(@answers_rand.nil?) %>
+                <%#@answers_rand.each do |answer| %>
+              	<!-- <li class="list-group-item"><%#=answer.answer %></li> -->
+              	<%#end %>
+            	<%#end %>
             </ul>
 
           <% elsif @question_master.question_type == "Radio" %>
