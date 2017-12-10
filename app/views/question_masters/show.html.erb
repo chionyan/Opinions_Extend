@@ -8,10 +8,8 @@
             <% path = textnew_a_path(@question_master.id) %>
             <p>回答例</p>
             <ul class="list-group">
-              <% if @answers_rand.kind_of?(Answer::ActiveRecord_AssociationRelation) %>
-                <% @answers_rand.each do |answer| %>
-              	  <li class="list-group-item"><%= answer.answer %></li>
-              	<% end %>
+              <% @answers_rand.each do |answer| %>
+            	  <li class="list-group-item"><%= answer.answer %></li>
             	<% end %>
             </ul>
 
