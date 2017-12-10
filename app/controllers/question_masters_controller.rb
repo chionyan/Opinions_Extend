@@ -23,7 +23,12 @@ class QuestionMastersController < ApplicationController
   
   def show
       @question_master = QuestionMaster.find(params[:id])
-      @answers_rand = @question_master.answers.order("RANDOM()").limit(5)
+      if Rails.env.development?
+        @answers_rand = @question_master.answers.order("RAND()").limit(5)
+      elsif Rails.env.production?
+        @answers_rand = @question_master.answers.order("RANDOM()").limit(5)
+      end
+      
       @chart_data = @question_master.answers.group(:answer).count
       
       if @question_master.question_type == "Check"
