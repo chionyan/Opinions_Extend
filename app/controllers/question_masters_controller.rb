@@ -28,7 +28,6 @@ class QuestionMastersController < ApplicationController
       elsif Rails.env.production?
         @answers_rand = @question_master.answers.order("RANDOM()").limit(5)
       end
-      
       @chart_data = @question_master.answers.group(:answer).count
       
       if @question_master.question_type == "Check"

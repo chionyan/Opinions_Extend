@@ -19,6 +19,8 @@ Rails.application.routes.draw do
   post 'question_masters/textcreate', to: 'question_masters#textcreate', as: 'textcreate'
   delete 'question_masters/textdelete', to: 'question_masters#textdelete', as: 'textdelete'
   
+  get 'rankings/answer', to: 'rankings#answer'
+  
   post 'answers/:id/new', to: 'answers#create', as: 'answers'
   get 'answers/:id/new', to: 'answers#new', as: 'answer'
   get 'answers/:id/textnew', to: 'answers#textnew', as: 'textnew_a'

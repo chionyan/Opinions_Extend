@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170807094209) do
+ActiveRecord::Schema.define(version: 20180106103712) do
 
   create_table "answers", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "type"
@@ -37,7 +37,7 @@ ActiveRecord::Schema.define(version: 20170807094209) do
     t.integer  "user_id"
     t.string   "title"
     t.string   "content"
-    t.date     "deadline"
+    t.datetime "deadline"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
     t.index ["user_id"], name: "index_question_masters_on_user_id", using: :btree

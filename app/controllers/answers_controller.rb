@@ -1,4 +1,5 @@
 class AnswersController < ApplicationController
+  
   def new
     @question_master = QuestionMaster.find(params[:id])
     if @question_master == "TextAnswer"

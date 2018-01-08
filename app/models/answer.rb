@@ -6,4 +6,8 @@ class Answer < ApplicationRecord
   
   belongs_to :question_master
   belongs_to :user
+  
+  def self.ranking
+    self.group(:question_master_id).order('count_question_master_id DESC').limit(5).count(:question_master_id)
+  end
 end

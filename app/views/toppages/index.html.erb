@@ -1,5 +1,5 @@
 <div class="row">
-  <div class="col-xs-offset-1 col-xs-10">
+  <div class="col-sm-8 col-xs-12">
     <div class="panel panel-default">
       <div class="panel-heading"><h1>最新の質問一覧</h1></div>
       <div class="panel-body">
@@ -12,7 +12,7 @@
                   </div>
                   <div class="media-body">
                     <div>
-                      <%= link_to user.name, user_path(user) %>さんの質問 <span class="text-muted">　投稿日: <%= question_master.created_at.to_s.gsub("UTC", "") %></span>
+                      <%= link_to user.name, user_path(user) %>さんの質問 <span class="text-muted">　投稿日: <%= question_master.created_at.strftime("%Y-%m-%d %H:%M:%S") %></span>
                     </div>
                     <div>
                       <p>
@@ -36,4 +36,48 @@
       </div>
     </div>
   </div>
+        <!-- left -->
+        <div class="col-sm-4 col-xs-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    人気ランキング
+                </div>
+                <ul class="nav nav-pills nav-stacked">
+                    <% rank_num = 1 %>
+                    <% @question_masters_rank.each do |question_master| %>
+                      <li>
+                        <%= link_to question_master, :method => :get do %>
+                          <i class="fa fa-trophy" aria-hidden="true"></i><%= rank_num %>．<%= question_master.title %>
+                        <% end %>
+                      </li>
+                      <% rank_num += 1 %>
+                    <% end %>
+                </ul> 
+            </div>
+        </div>
+        
+        <div class="col-sm-4 col-xs-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    期限が近い質問
+                </div>
+                <ul class="nav nav-pills nav-stacked">
+                  <% @question_masters_limit.each do |question_master| %>
+                      <% user = question_master.user %>
+                      <% dead = question_master.deadline.to_datetime %>
+                      <% today = DateTime.now %>
+                      <% diff = dead-today %>
+                      <% day = diff.to_i %>
+                      <% hour = ((diff-day)*24).to_i %>
+                      <% min = ((diff-day-(hour/24))*60).to_i %>
+                      <% sec = ((diff-day-(hour/24)-(min/60))*60).to_i %>
+                        <li>
+                          <% limit = "残り" + day.to_s + "日" + hour.to_s + "時間" + min.to_s + "分" + sec.to_s + "秒" %>
+                          <%= link_to question_master.title + ' ', question_master %>
+                          <span class="deadline"></span>
+                        </li>
+                  	<% end %>
+                </ul> 
+            </div>
+        </div>
 </div>

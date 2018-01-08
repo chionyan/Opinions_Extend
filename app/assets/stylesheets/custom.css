@@ -129,3 +129,22 @@ body {
   vertical-align: middle;
   font-size: 18px;/*サイズ*/
 }
+
+
+/*テスト*/
+.p-home .ra-UserList {
+    background-color: #fff;
+    border: 1px solid transparent;
+    margin-bottom: 16px;
+}
+
+.p-2 {
+    padding: 16px;
+}
+
+.ra-UserList_header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: cetner;
+    justify-content: space-between;
+}
