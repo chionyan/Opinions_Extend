@@ -64,18 +64,18 @@
                 <ul class="nav nav-pills nav-stacked">
                   <% @question_masters_limit.each do |question_master| %>
                       <% user = question_master.user %>
-                      <% dead = question_master.deadline.to_datetime %>
+                      <% deadline = question_master.deadline.to_datetime %>
                       <% today = DateTime.now %>
-                      <% diff = dead-today %>
+                      <% diff = deadline-today %>
                       <% day = diff.to_i %>
                       <% hour = ((diff-day)*24).to_i %>
                       <% min = ((diff-day-(hour/24))*60).to_i %>
                       <% sec = ((diff-day-(hour/24)-(min/60))*60).to_i %>
-                        <li>
-                          <% limit = "残り" + day.to_s + "日" + hour.to_s + "時間" + min.to_s + "分" + sec.to_s + "秒" %>
-                          <%= link_to question_master.title + ' ', question_master %>
-                          <span class="deadline"></span>
-                        </li>
+                      <li>
+                        <% limit = "残り" + day.to_s + "日" + hour.to_s + "時間" + min.to_s + "分" + sec.to_s + "秒" %>
+                        <%= link_to question_master.title + ' ', question_master %>
+                        <span class="deadline" data-deadline=<%= deadline %>></span>
+                      </li>
                   	<% end %>
                 </ul> 
             </div>

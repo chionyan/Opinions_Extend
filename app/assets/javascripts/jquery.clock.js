@@ -3,7 +3,7 @@
 
 $(function(){
 	'use strict';
-
+  
 	// 定数　（月・曜日の配列）
 	var MONTH = {
 				full: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
@@ -48,7 +48,7 @@ $(function(){
 				'second': ( now.getSeconds() < 10 ) ? '0' + now.getSeconds() : now.getSeconds()
 			};
 		
-		var tgtFull = new Date("Thu, 10 Jan 2018 12:28:00 +0900");
+		var tgtFull = $('.deadline').data('deadline');
 
     var SECOND_MILLISECOND = 1000,
         MINUTE_MILLISECOND = 60 * SECOND_MILLISECOND,
@@ -79,10 +79,10 @@ $(function(){
 		var diff_min = minuteDistance(now['full'],tgtFull);
 		var diff_sec = secondDistance(now['full'],tgtFull);
     
-    
     if (diff_Date == 0 && diff_hour == 0 && diff_min == 0 && diff_sec == 0) {
       $(".deadline").html("回答期限終了");
     } else {
+    	console.log(diff_sec);
       $(".deadline").html("残り" + diff_Date + "日" + diff_hour + "時間" + diff_min + "分" + diff_sec + "秒");
     }
   
