@@ -48,7 +48,7 @@ $(function(){
 				'second': ( now.getSeconds() < 10 ) ? '0' + now.getSeconds() : now.getSeconds()
 			};
 		
-		var tgtFull = $('.deadline').data('deadline');
+		var tgtFull = new Date($('.deadline').data('deadline'));
 
     var SECOND_MILLISECOND = 1000,
         MINUTE_MILLISECOND = 60 * SECOND_MILLISECOND,
